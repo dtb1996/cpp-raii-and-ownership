@@ -1,4 +1,4 @@
-name: CI Build and Release (Test Branch)
+name: CI Build and Release
 
 on:
   push:
@@ -26,7 +26,7 @@ jobs:
           cp build/cpp_raii_and_ownership artifacts/cpp_raii_and_ownership_linux
 
       - name: Upload Linux artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: linux-artifact
           path: artifacts/cpp_raii_and_ownership_linux
@@ -51,7 +51,7 @@ jobs:
           copy build\Release\cpp_raii_and_ownership.exe artifacts\cpp_raii_and_ownership_windows.exe
 
       - name: Upload Windows artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: windows-artifact
           path: artifacts/cpp_raii_and_ownership_windows.exe
