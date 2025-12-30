@@ -2,6 +2,7 @@
 #include "scoped_file.h"
 
 #include <thread>
+#include <iostream>
 
 void SimulatedWork()
 {
@@ -37,6 +38,9 @@ int main()
     }
 
     WriteMessage();
+
+    std::cout << "Press Enter to exit...";
+    std::cin.get();
 
     return 0;
 }
