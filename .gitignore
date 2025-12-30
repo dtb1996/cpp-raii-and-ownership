@@ -1,58 +1,17 @@
-# ================================
-# Visual Studio
-# ================================
-.vs/
-*.suo
-*.user
-*.userosscache
-*.sln.docstates
-
-# ================================
-# Build Output
-# ================================
-Debug/
-Release/
-x64/
-x86/
+# Build directories
 build/
 out/
+cmake-build-*/
 
-# ================================
-# Intermediate Files
-# ================================
-*.obj
-*.pch
-*.pdb
-*.idb
-*.ilk
-*.tlog
-*.log
-*.lastbuildstate
+# IDE files
+.vs/
+.vscode/
+*.user
 
-# ================================
-# Executables
-# ================================
+# Binaries
 *.exe
-*.dll
-*.lib
-*.exp
+*.pdb
+*.ilk
 
-# ================================
-# CMake
-# ================================
-CMakeFiles/
-CMakeCache.txt
-cmake_install.cmake
-*.cmake
-
-# ================================
-# OS / Editor Noise
-# ================================
-Thumbs.db
-.DS_Store
-
-# ================================
-# Generated Runtime Artifacts
-# ================================
-
+# Generated output
 example.txt
