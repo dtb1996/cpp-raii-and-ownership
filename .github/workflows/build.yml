@@ -1,4 +1,4 @@
-name: CMake Build
+name: CI Build and Release (Test Branch)
 
 on:
   push:
@@ -6,16 +6,12 @@ on:
       - ci
 
 jobs:
-  build:
-    name: Build (${{ matrix.os }})
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      matrix:
-        os: [ubuntu-latest, windows-latest]
+  build-linux:
+    name: Build Linux
+    runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout repo
         uses: actions/checkout@v4
 
       - name: Configure CMake
@@ -23,3 +19,39 @@ jobs:
 
       - name: Build
         run: cmake --build build --config Release
+
+      - name: Package artifact
+        run: |
+          mkdir -p artifacts
+          cp build/cpp_raii_and_ownership artifacts/cpp_raii_and_ownership_linux
+
+      - name: Upload Linux artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: linux-artifact
+          path: artifacts/cpp_raii_and_ownership_linux
+
+  build-windows:
+    name: Build Windows
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Configure CMake
+        run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+
+      - name: Build
+        run: cmake --build build --config Release
+
+      - name: Package artifact
+        run: |
+          mkdir artifacts
+          copy build\Release\cpp_raii_and_ownership.exe artifacts\cpp_raii_and_ownership_windows.exe
+
+      - name: Upload Windows artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: windows-artifact
+          path: artifacts/cpp_raii_and_ownership_windows.exe
