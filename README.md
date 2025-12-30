@@ -11,6 +11,24 @@ This repository is intentionally engine-agnostic and avoids frameworks to highli
 - Implement move-only types
 - Show understanding of the Rule of Five
 - Avoid memory leaks and undefined behavior
+- Be portable across platforms and compilers
+
+## Project Structure
+
+```bash
+cpp-raii-and-ownership/
+├── include/
+│   ├── scoped_timer.h
+│   └── scoped_file.h
+├── src/
+│   ├── main.cpp
+│   ├── scoped_timer.cpp
+│   └── scoped_file.cpp
+├── CMakeLists.txt
+├── .gitattributes
+├── .gitignore
+└── README.md
+```
 
 ## Implemented Components
 
@@ -55,12 +73,75 @@ An RAII wrapper around FILE\*.
 - `= delete` for ownership enforcement
 - Destructor correctness
 - Lifetime clarity
+- Cross-platform C++ development with CMak
+
+## Build Requirements
+
+### Required
+
+- **C++ compiler with C++20 support**
+  - Windows: MSVC (Visual Studio Build Tools)
+  - Linux: `g++` or `clang`
+- **CMake 3.16 or newer**
+
+## Installing CMake
+
+### Windows
+
+Download and install from:
+
+- [CMake Download](https://cmake.org/download/)
+
+Make sure **“Add CMake to PATH”** is enabled during installation.
+
+Verify:
+
+```bash
+cmake --version
+```
+
+### Linux
+
+```bash
+sudo apt update
+sudo apt install cmake build-essential
+```
+
+Verify:
+
+```bash
+cmake --version
+```
 
 ## Build Instructions
 
-- Open cpp-raii-and-ownership.sln in Visual Studio 2022
-- Build in Debug or Release
-- Run the console application
+1. Configure the project
+
+   From the project root:
+
+   ```bash
+   cmake -S . -B build
+   ```
+
+2. Build
+
+   ```bash
+   cmake --build build
+   ```
+
+3. Run
+
+   Windows
+
+   ```bash
+   build\Debug\cpp-raii-and-ownership.exe
+   ```
+
+   Linux
+
+   ```bash
+   ./build/cpp-raii-and-ownership
+   ```
 
 ## Why This Project Exists
 
