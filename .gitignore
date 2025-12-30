@@ -1,0 +1,52 @@
+# ================================
+# Visual Studio
+# ================================
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# ================================
+# Build Output
+# ================================
+Debug/
+Release/
+x64/
+x86/
+build/
+out/
+
+# ================================
+# Intermediate Files
+# ================================
+*.obj
+*.pch
+*.pdb
+*.idb
+*.ilk
+*.tlog
+*.log
+*.lastbuildstate
+
+# ================================
+# Executables
+# ================================
+*.exe
+*.dll
+*.lib
+*.exp
+
+# ================================
+# CMake (if added later)
+# ================================
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+*.cmake
+
+# ================================
+# OS / Editor Noise
+# ================================
+Thumbs.db
+.DS_Store

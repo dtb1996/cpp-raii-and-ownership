@@ -1,0 +1,20 @@
+# Ensure consistent line endings
+* text=auto eol=lf
+
+# C++ source files
+*.cpp   text
+*.h     text
+*.hpp   text
+
+# Project / build files
+*.sln        text eol=crlf
+*.vcxproj    text eol=crlf
+*.filters    text eol=crlf
+
+# Markdown
+*.md    text
+
+# Binary files
+*.png   binary
+*.jpg   binary
+*.exe   binary
