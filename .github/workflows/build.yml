@@ -26,14 +26,13 @@ jobs:
       - name: Package artifact
         run: |
           mkdir -p artifacts
-          cp build/cpp_raii_and_ownership artifacts/
-          zip -r artifacts/cpp_raii_and_ownership_linux.zip artifacts/cpp_raii_and_ownership
+          cp build/cpp_raii_and_ownership artifacts/cpp_raii_and_ownership_linux
 
-      - name: Upload artifact
+      - name: Upload Linux artifact
         uses: actions/upload-artifact@v4
         with:
           name: linux-artifact
-          path: artifacts/cpp_raii_and_ownership_linux.zip
+          path: artifacts/cpp_raii_and_ownership_linux
 
   build-windows:
     name: Build Windows
@@ -45,22 +44,17 @@ jobs:
 
       - name: Configure CMake
         run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
-        shell: pwsh
 
       - name: Build
         run: cmake --build build --config Release
-        shell: pwsh
 
       - name: Package artifact
         run: |
           mkdir artifacts
-          $zipName = "cpp_raii_and_ownership_windows.zip"
-          Copy-Item -Path build\Release\cpp_raii_and_ownership.exe -Destination artifacts\
-          Compress-Archive -Path artifacts\cpp_raii_and_ownership.exe -DestinationPath artifacts\$zipName
-        shell: pwsh
+          copy build\Release\cpp_raii_and_ownership.exe artifacts\cpp_raii_and_ownership_windows.exe
 
-      - name: Upload artifact
+      - name: Upload Windows artifact
         uses: actions/upload-artifact@v4
         with:
           name: windows-artifact
-          path: artifacts/cpp_raii_and_ownership_windows.zip
+          path: artifacts/cpp_raii_and_ownership_windows.exe
