@@ -73,7 +73,7 @@ An RAII wrapper around FILE\*.
 - `= delete` for ownership enforcement
 - Destructor correctness
 - Lifetime clarity
-- Cross-platform C++ development with CMak
+- Cross-platform C++ development with CMake
 
 ## Build Requirements
 
